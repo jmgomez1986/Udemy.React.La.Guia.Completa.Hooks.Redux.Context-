@@ -1,16 +1,17 @@
 // Function Declaration
-function saludar(nombre) {
-    console.log(`Bienvenido ${nombre}`);
+function actividadFD(nombre = 'NN', actividad = 'Desconocida') {
+    console.log(`La persona ${nombre} esta realizando la actividad ${actividad}`);
 }
 
-saludar('Matias');
+actividadFD('Matias', 'repaso de JavaScript');
+actividadFD('Matias');
+actividadFD();
 
 //Function  Expression
-const cliente = function(nombre) {
-    console.log(`Nombre: ${nombre}`);
+const actividadFE = function(nombre = 'NN', actividad = 'Desconocida') {
+    console.log(`La persona ${nombre} esta realizando la actividad ${actividad}`);
 }
-cliente('Matias');
 
-// La diferencia esta en que las 'Funtion Declaration'
-// se pueden usar antes de ser declaradas, mientras
-// que las otras, deben usarse luego de declararse
+actividadFE('Matias', 'repaso de JavaScript');
+actividadFE('Matias');
+actividadFE();
