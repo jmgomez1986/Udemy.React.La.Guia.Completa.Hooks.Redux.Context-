@@ -1,17 +1,15 @@
-// Function Declaration
-function actividadFD(nombre = 'NN', actividad = 'Desconocida') {
-    console.log(`La persona ${nombre} esta realizando la actividad ${actividad}`);
-}
+let viajando = destino => `Viajando a la ciudad de: ${destino}`;
 
-actividadFD('Matias', 'repaso de JavaScript');
-actividadFD('Matias');
-actividadFD();
+let viaje;
+viaje = viajando('Londres');
 
-//Function  Expression
-const actividadFE = function(nombre = 'NN', actividad = 'Desconocida') {
-    console.log(`La persona ${nombre} esta realizando la actividad ${actividad}`);
-}
+console.log(viaje);
 
-actividadFE('Matias', 'repaso de JavaScript');
-actividadFE('Matias');
-actividadFE();
+/////////////////
+
+let viajando2 = (destino, duracion) => `Viajando a la ciudad de: ${destino} con una duracion de ${duracion}`;
+
+let viaje2;
+viaje2 = viajando2('Londres', '2 dias');
+
+console.log(viaje2);
