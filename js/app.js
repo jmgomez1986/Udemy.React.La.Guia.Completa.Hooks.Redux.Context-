@@ -1,56 +1,3 @@
-// Hacer la petición con ajax
-// const descargarUsuarios = (cantidad) =>
-//   new Promise(async (resolve, reject) => {
-//     const api = `https://randomuser.me/api/?results=${cantidad}&nat=us`;
-
-//     const xhr = new XMLHttpRequest();
-
-//     xhr.open("GET", api, true);
-
-//     xhr.onload = () => {
-//       if (xhr.status === 200) {
-//         resolve(JSON.parse(xhr.responseText).results);
-//       } else {
-//         reject(Error(xhr.statusText));
-//       }
-//     };
-
-//     xhr.onerror = (error) => reject(error); // opcional
-
-//     xhr.send();
-//   });
-
-// descargarUsuarios(20)
-//     .then(
-//         (miembros) => console.log(miembros),
-//         (error) => console.error(new Error('Hubo un error: ' + error))
-//     );
-
-// Hacer la petición con fetch
-// const downloadUser = (cantidad) =>
-//   new Promise(async (resolve, reject) => {
-//     const api = `https://randomuser.me/api/?results=${cantidad}&nat=us`;
-
-//     try {
-//       const dataAjax = await fetch(api);
-//       const results = await dataAjax.json();
-//       resolve(results);
-//     } catch (error) {
-//       reject(error);
-//     }
-//   });
-
-// async function called() {
-//   try {
-//     const data = await downloadUser(20);
-//     console.log(data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-// called();
-
 // Manera de hacerlo en 2020
 async function getUserAsync(cantidadUsuarios) {
   const api = `https://randomuser.me/api/?results=${cantidadUsuarios}&nat=us`;
@@ -58,12 +5,30 @@ async function getUserAsync(cantidadUsuarios) {
   try {
     let response = await fetch(api);
     let data = await response.json();
-    return data;
+    return data.results;
   } catch (error) {
-    return "Ocurrio el siguiente error: " + error;
+    return `Ocurrio el siguiente error:  ${error}`;
   }
 }
 
 getUserAsync(20).then((data) => {
-  console.log(data);
+  imprimirHTML(data);
 });
+
+function imprimirHTML(usuarios) {
+    let html = '';
+
+    usuarios.forEach(usuario => {
+        html += `
+            <li>
+                Nombre: ${usuario.name.first} ${usuario.name.last}
+                País: ${usuario.nat}
+                Imagen:
+                    <img src="${usuario.picture.medium}">
+            </li>`;
+    });
+
+    const appContenedor = document.querySelector('#app');
+
+    appContenedor.innerHTML = html;
+}
