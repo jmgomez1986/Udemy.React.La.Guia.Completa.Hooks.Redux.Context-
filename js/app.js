@@ -1,17 +1,30 @@
-const banda = 'Iron Maiden';
-const genero = 'Heavy Metal';
-const canciones = ['Brave New World', 'Empire of the Clouds', 'Power Slave'];
-
 // Forma anterior
-const ironMaiden01 = {
-    banda: banda,
-    genero: genero,
-    canciones: canciones
+const persona01 = {
+    nombre: 'Matias',
+    trabajo: 'Desarrollador Web',
+    edad: 500,
+    musicaRock: true,
+    mostrarInformacion: function() {
+        console.log(
+          `Forma anterior: ${this.nombre} es ${this.trabajo} y su edad es ${this.edad}`
+        );
+    }
 }
 
-console.log("Forma anterior: ", ironMaiden01);
+persona01.mostrarInformacion();
 
 // Forma nueva
-const ironMaiden02 = {banda, genero, canciones};
 
-console.log('Forma nueva: ', ironMaiden02);
+const persona02 = {
+  nombre: "Matias",
+  trabajo: "Desarrollador Web",
+  edad: 500,
+  musicaRock: true,
+  mostrarInformacion() {
+    console.log(
+      `Forma nueva: ${this.nombre} es ${this.trabajo} y su edad es ${this.edad}`
+    );
+  },
+};
+
+persona02.mostrarInformacion();
