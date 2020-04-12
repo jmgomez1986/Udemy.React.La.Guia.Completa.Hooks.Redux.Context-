@@ -1,14 +1,27 @@
-// Object Constructor
-function Tarea(nombre, urgencia) {
-    this.nombre = nombre;
-    this.urgencia = urgencia;
-}
+// Destructuring de objetos: es extraer los valores de un objeto
+const aprendiendoJS = {
+  version: {
+    nueva: "ES6",
+    anterior: "ES5",
+  },
+  frameworks: ["React", "VueJS", "AngularJS"],
+};
 
-Tarea.prototype.mostrarInformacionTarea = function() {
-    return `La tarea ${this.nombre} tiene una prioridad ${this.urgencia}`;
-}
+console.log("Object literal: ", aprendiendoJS);
 
-const tarea1 = new Tarea('Aprender React', 'Urgente');
+let version = aprendiendoJS.version.nueva;
+let framework = aprendiendoJS.frameworks[1];
 
-console.log(tarea1);
-console.log(tarea1.mostrarInformacionTarea());
+console.log("Version: ", version);
+console.log("Framework: ", framework);
+
+let { anterior } = aprendiendoJS.version;
+console.log("Version (forma nueva): ", anterior);
+
+let { frameworks } = aprendiendoJS;
+
+console.log("Frameworks (forma nueva): ", frameworks);
+
+let [first, ...rest] = aprendiendoJS.frameworks; // con listas. - trae los sobrante (...rest)
+
+console.log(rest);
