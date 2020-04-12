@@ -1,30 +1,13 @@
-const carrito = ["Producto 1", "Producto 2", "Producto 3"];
+let lenguajes = ['Javacript', 'PHP', 'Python'];
+let frameworks = ['ReactJS', 'Laravel', 'Django'];
 
-console.log(carrito);
+// Unir arreglos en uno
 
-// Array
+let combinacion01 = lenguajes.concat(frameworks);
 
-carrito.forEach((producto) => {
-  console.log(`(Usando Array) El producto es ${producto}`);
-});
+console.log('Union forma anterior: ', combinacion01);
 
-// Map
+let combinacion02 = [...lenguajes, ...frameworks];
 
-const carrito2 = carrito.map((producto) => {
-  return `El producto es ${producto}`;
-});
+console.log('Union forma nueva: ', combinacion02);
 
-console.log("Usando Map: ", carrito2);
-
-// Object key
-
-const persona01 = {
-  nombre: "Matias",
-  trabajo: "Desarrollador Web",
-  edad: 500,
-};
-
-const { nombre } = persona01;
-console.log(nombre);
-
-console.log(Object.keys(persona01));
