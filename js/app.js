@@ -1,30 +1,30 @@
 // Hacer la petición con ajax
-const descargarUsuarios = (cantidad) =>
-  new Promise(async (resolve, reject) => {
-    const api = `https://randomuser.me/api/?results=${cantidad}&nat=us`;
+// const descargarUsuarios = (cantidad) =>
+//   new Promise(async (resolve, reject) => {
+//     const api = `https://randomuser.me/api/?results=${cantidad}&nat=us`;
 
-    const xhr = new XMLHttpRequest();
+//     const xhr = new XMLHttpRequest();
 
-    xhr.open("GET", api, true);
+//     xhr.open("GET", api, true);
 
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        resolve(JSON.parse(xhr.responseText).results);
-      } else {
-        reject(Error(xhr.statusText));
-      }
-    };
+//     xhr.onload = () => {
+//       if (xhr.status === 200) {
+//         resolve(JSON.parse(xhr.responseText).results);
+//       } else {
+//         reject(Error(xhr.statusText));
+//       }
+//     };
 
-    xhr.onerror = (error) => reject(error); // opcional
+//     xhr.onerror = (error) => reject(error); // opcional
 
-    xhr.send();
-  });
+//     xhr.send();
+//   });
 
-descargarUsuarios(20)
-    .then(
-        (miembros) => console.log(miembros),
-        (error) => console.error(new Error('Hubo un error: ' + error))
-    );
+// descargarUsuarios(20)
+//     .then(
+//         (miembros) => console.log(miembros),
+//         (error) => console.error(new Error('Hubo un error: ' + error))
+//     );
 
 // Hacer la petición con fetch
 // const downloadUser = (cantidad) =>
@@ -50,3 +50,20 @@ descargarUsuarios(20)
 // }
 
 // called();
+
+// Manera de hacerlo en 2020
+async function getUserAsync(cantidadUsuarios) {
+  const api = `https://randomuser.me/api/?results=${cantidadUsuarios}&nat=us`;
+
+  try {
+    let response = await fetch(api);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    return "Ocurrio el siguiente error: " + error;
+  }
+}
+
+getUserAsync(20).then((data) => {
+  console.log(data);
+});
