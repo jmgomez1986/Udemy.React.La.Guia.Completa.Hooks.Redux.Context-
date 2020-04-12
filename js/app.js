@@ -1,27 +1,17 @@
-// Destructuring de objetos: es extraer los valores de un objeto
-const aprendiendoJS = {
-  version: {
-    nueva: "ES6",
-    anterior: "ES5",
-  },
-  frameworks: ["React", "VueJS", "AngularJS"],
-};
+const banda = 'Iron Maiden';
+const genero = 'Heavy Metal';
+const canciones = ['Brave New World', 'Empire of the Clouds', 'Power Slave'];
 
-console.log("Object literal: ", aprendiendoJS);
+// Forma anterior
+const ironMaiden01 = {
+    banda: banda,
+    genero: genero,
+    canciones: canciones
+}
 
-let version = aprendiendoJS.version.nueva;
-let framework = aprendiendoJS.frameworks[1];
+console.log("Forma anterior: ", ironMaiden01);
 
-console.log("Version: ", version);
-console.log("Framework: ", framework);
+// Forma nueva
+const ironMaiden02 = {banda, genero, canciones};
 
-let { anterior } = aprendiendoJS.version;
-console.log("Version (forma nueva): ", anterior);
-
-let { frameworks } = aprendiendoJS;
-
-console.log("Frameworks (forma nueva): ", frameworks);
-
-let [first, ...rest] = aprendiendoJS.frameworks; // con listas. - trae los sobrante (...rest)
-
-console.log(rest);
+console.log('Forma nueva: ', ironMaiden02);
