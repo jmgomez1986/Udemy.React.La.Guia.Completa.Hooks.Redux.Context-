@@ -11,12 +11,7 @@ function Header() {
   }
 
   return (
-    <div>
-      <h1>{mensaje} Tu edad es de {edad} años</h1>
-      <h1 className="encabezado">Tienda Virtual</h1>
-    </div>
-    // Para usar variables declaras antes del 'return' se usn entre {}
-    // Para definir una clase de estilo hay que usar 'className' ya ue la palabra 'class' es una palabra reservada de JavaSript
+    <h1 className="encabezado">Tienda Virtual</h1>      
   )
 }
 
