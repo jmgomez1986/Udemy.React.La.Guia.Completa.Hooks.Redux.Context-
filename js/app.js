@@ -1,7 +1,7 @@
-import { nombreTarea, crearTarea } from './tareas.js';
+import Tarea from './tareas.js';
 
-console.log(nombreTarea);
-
-const tarea1 = crearTarea('Hacer mate', 'Urgente');
+const tarea1 = new Tarea('Aprender React', 'Urgente');
 
 console.log(tarea1);
+
+console.log(tarea1.mostrar());
