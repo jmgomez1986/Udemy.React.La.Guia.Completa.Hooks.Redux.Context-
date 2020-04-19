@@ -1,5 +1,11 @@
 export const nombreTarea = 'Hacer mate';
 
+// Exportar funciones
+
+export const crearTarea = (nombre, prioridad) => {
+    return `La tarea ${nombre} tiene una prioridad ${prioridad}`;
+}
+
 class Tarea {
   constructor(nombre, prioridad) {
     this.nombre = nombre;
