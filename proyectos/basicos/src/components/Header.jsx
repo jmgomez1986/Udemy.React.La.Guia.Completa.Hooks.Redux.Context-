@@ -1,17 +1,9 @@
-import React from 'react'; // Este import siempre hay que ponerlo para tener acceso a todos lo metodos y funciones de React
+import React from 'react';
 
-function Header() {
-  const edad = 18;
-  let mensaje;
-
-  if ( edad >= 18) {
-    mensaje = 'Eres mayor de edad.';
-  } else {
-    mensaje = 'Eres menor de edad.';
-  }
+function Header({ titulo }) {
 
   return (
-    <h1 className="encabezado">Tienda Virtual</h1>      
+    <h1 className="encabezado">{titulo}</h1>      
   )
 }
 

@@ -3,13 +3,21 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
+
+  // Obtener fecha actual
+  const fecha = new Date().getFullYear(); 
+
   return (
     <Fragment>
-      <Header />
+      <Header
+        titulo='Tienda Virtual'
+      />
 
-      <Footer />
+      <Footer
+        fecha={fecha} // Las variables de ponenen enre llaves
+      />
     </Fragment>
   );
 }
-// Usar fragment evita crear divs de gusto
+
 export default App;
