@@ -1,6 +1,7 @@
 import React, { Fragment, useState} from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Producto from './components/Producto';
 
 // El state es todo lo que va a reacionar a una accion del usuario
 
@@ -20,6 +21,14 @@ function App() {
       <Header
         titulo='Tienda Virtual'
       />
+
+    <h1>Lista de productos</h1>
+    {productos.map(producto => (
+      <Producto
+        key={producto.id} // siempre hay que pasarle un key que haga el elemento unico
+        producto={producto}
+      />
+    ))}
 
       <Footer
         fecha={fecha} // Las variables de ponenen enre llaves
