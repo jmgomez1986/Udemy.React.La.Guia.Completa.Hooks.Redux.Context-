@@ -6,7 +6,11 @@ const Producto = ({ producto, carrito, productos, agregarProducto }) => {
   // Agregar producto al carrito
   const sleccionarProducto = id=> {
     const producto = productos.filter( producto => producto.id === id)[0];
-    console.log('comprando... ', producto);
+    // El state no se modifica directamente, hay que usar laa funcion
+    agregarProducto([
+      ...carrito,
+      producto
+    ]);
   }
   return ( 
   
