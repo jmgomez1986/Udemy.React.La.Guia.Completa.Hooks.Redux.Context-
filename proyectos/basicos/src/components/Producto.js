@@ -1,11 +1,12 @@
 import React from 'react'; // Escribir imr y tab y autocompleta
 
-const Producto = ({ producto }) => {
+const Producto = ({ producto, carrito, productos, agregarProducto }) => {
   const {id, nombre, precio} = producto;
 
   // Agregar producto al carrito
   const sleccionarProducto = id=> {
-    console.log('comprando... ', id);
+    const producto = productos.filter( producto => producto.id === id)[0];
+    console.log('comprando... ', producto);
   }
   return ( 
   

@@ -12,7 +12,11 @@ function App() {
     { id: 2, nombre: 'Camisa VueJS', precio: 40 },
     { id: 3, nombre: 'Camisa Node.js', precio: 20 },
     { id: 4, nombre: 'Camisa Angular', precio: 30 },
-  ])
+  ]);
+
+  // Crear listado de productos
+  const [carrito, agregarProducto] = useState([]);
+
   // Obtener fecha actual
   const fecha = new Date().getFullYear(); 
 
@@ -27,6 +31,9 @@ function App() {
       <Producto
         key={producto.id} // siempre hay que pasarle un key que haga el elemento unico
         producto={producto}
+        productos={productos}
+        carrito={carrito}
+        agregarProducto={agregarProducto}
       />
     ))}
 
