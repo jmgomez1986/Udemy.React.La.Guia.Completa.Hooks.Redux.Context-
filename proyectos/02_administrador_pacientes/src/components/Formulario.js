@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import uuid from 'uuid/v4';
 
 const Formulario = () => {
 
@@ -43,8 +44,12 @@ const Formulario = () => {
       return; // Para que no se siga ejecutando el codigo
     }
 
-    // Asignar ID
+    // Eliminar mensaje previo de error
+    actualizarError(false);
 
+    // Asignar ID (Se instala una libreria 'uuid' para generar un id unico)
+    cita.id = uuid;
+    
     // Crear la cia
 
     // Reiniciar el form
