@@ -4,15 +4,21 @@ import Cita from './components/Cita';
 
 function App() {
 
-// Arreglo de citas
-const [citas, guardarCitas] = useState([]);
+  // Arreglo de citas
+  const [citas, guardarCitas] = useState([]);
 
-// Funcion que tome las citas actuales y agregue la nueva
-const crearCita = cita => {
-  guardarCitas([
-    ...citas, cita
-  ]);
-}
+  // Funcion que tome las citas actuales y agregue la nueva
+  const crearCita = cita => {
+    guardarCitas([
+      ...citas, cita
+    ]);
+  }
+
+  // Fucion que elimina una cita por su id
+  const eliminarCita = id => {
+    const nuevasCitas = citas.filter(cita => cita.id !== id);
+    guardarCitas(nuevasCitas)
+  };
 
   return (
     <Fragment>
@@ -22,7 +28,8 @@ const crearCita = cita => {
         <div className="row">
           <div className="one-half column">
             <Formulario
-              crearCita={crearCita}/>
+              crearCita={crearCita}
+            />
           </div>
           <div className="one-half column">
             <h2>Administra tus citas</h2>
@@ -30,6 +37,7 @@ const crearCita = cita => {
               <Cita
                 key={cita.id}
                 cita={cita}
+                eliminarCita={eliminarCita}
               />
             ))}
           </div>

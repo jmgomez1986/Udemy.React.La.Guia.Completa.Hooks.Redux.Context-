@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import uuid from 'react-uuid'; 
+import uuid from 'react-uuid';
 
-const Formulario = ({crearCita}) => {
+const Formulario = ({ crearCita }) => {
 
   // Crear State e Citas
   const [cita, actualizarCita] = useState({
@@ -22,7 +22,7 @@ const Formulario = ({crearCita}) => {
   }
 
   // Extraer los valores del formulario
-  const {mascota, propietario, fecha, hora, sintomas} = cita;
+  const { mascota, propietario, fecha, hora, sintomas } = cita;
 
   // const isEmpty = str => str.trim() === "";
 
@@ -68,7 +68,7 @@ const Formulario = ({crearCita}) => {
     <Fragment>
       <h2>Crear cita</h2>
 
-    {error ? <p className="alerta-error">Todos los campos son obligatorios</p> : null}
+      {error ? <p className="alerta-error">Todos los campos son obligatorios</p> : null}
 
       <form
         onSubmit={submitCita}>
@@ -79,7 +79,7 @@ const Formulario = ({crearCita}) => {
           className="u-full-width"
           placeholder="Nombre Mascota"
           onChange={actualizarState}
-          value={mascota}/>
+          value={mascota} />
 
         <label>Nombre del dueño</label>
         <input
@@ -88,7 +88,7 @@ const Formulario = ({crearCita}) => {
           className="u-full-width"
           placeholder="Nombre del Dueño de la Mascota"
           onChange={actualizarState}
-          value={propietario}/>
+          value={propietario} />
 
         <label>Fecha</label>
         <input
@@ -96,7 +96,7 @@ const Formulario = ({crearCita}) => {
           name="fecha"
           className="u-full-width"
           onChange={actualizarState}
-          value={fecha}/>
+          value={fecha} />
 
         <label>Hora</label>
         <input
@@ -104,7 +104,7 @@ const Formulario = ({crearCita}) => {
           name="hora"
           className="u-full-width"
           onChange={actualizarState}
-          value={hora}/>
+          value={hora} />
 
         <label>Síntomas</label>
         <textarea
@@ -118,7 +118,7 @@ const Formulario = ({crearCita}) => {
           type="submit"
           className="u-full-width button-primary">
           Agrega cita
-        </button>                  
+        </button>
       </form>
     </Fragment>
   );
