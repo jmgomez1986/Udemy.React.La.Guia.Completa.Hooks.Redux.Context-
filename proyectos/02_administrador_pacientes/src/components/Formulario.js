@@ -12,9 +12,14 @@ const Formulario = () => {
   });
 
   // Funcion que se ejecuta cuando se escribe en un inpt
-  const actualizarState = () => {
-    console.log('Escribiendo...');
+  const actualizarState = e => {
+    actualizarCita({
+      ...cita, [e.target.name]: e.target.value
+    })
   }
+
+  // Extraer los valores del formulario
+  const {mascota, propietario, fecha, hora, sintomas} = cita;
 
   return (
     <Fragment>
@@ -27,7 +32,8 @@ const Formulario = () => {
           name="mascota"
           className="u-full-width"
           placeholder="Nombre Mascota"
-          onChange={actualizarState}/>
+          onChange={actualizarState}
+          value={mascota}/>
 
         <label>Nombre del dueño</label>
         <input
@@ -35,27 +41,31 @@ const Formulario = () => {
           name="propietario"
           className="u-full-width"
           placeholder="Nombre del Dueño de la Mascota"
-          onChange={actualizarState}/>
+          onChange={actualizarState}
+          value={propietario}/>
 
         <label>Fecha</label>
         <input
           type="date"
           name="fecha"
           className="u-full-width"
-          onChange={actualizarState}/>
+          onChange={actualizarState}
+          value={fecha}/>
 
         <label>Hora</label>
         <input
           type="time"
           name="hora"
           className="u-full-width"
-          onChange={actualizarState}/>
+          onChange={actualizarState}
+          value={hora}/>
 
         <label>Síntomas</label>
         <textarea
           name="sintomas"
           className="u-full-width"
-          onChange={actualizarState}>
+          onChange={actualizarState}
+          value={sintomas}>
         </textarea>
 
         <button
