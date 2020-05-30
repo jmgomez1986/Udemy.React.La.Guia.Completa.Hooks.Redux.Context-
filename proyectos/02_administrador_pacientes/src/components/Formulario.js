@@ -11,6 +11,8 @@ const Formulario = () => {
     sintomas: ''
   });
 
+  const [error, actualizarError] = useState(false);
+
   // Funcion que se ejecuta cuando se escribe en un inpt
   const actualizarState = e => {
     actualizarCita({
@@ -21,12 +23,25 @@ const Formulario = () => {
   // Extraer los valores del formulario
   const {mascota, propietario, fecha, hora, sintomas} = cita;
 
+  // const isEmpty = str => str.trim() === "";
+
   // Cuando se presiona 'Agregar cita'
   const submitCita = e => {
     e.preventDefault();
-    console.log('Enviando form....');
 
-    // Valdar
+    // Validar
+    // const keys = Object.keys(cita);
+    // const fields = keys.filter((key) => isEmpty(cita[key]));
+    // if (fields.length > 0) {
+    //   console.log("no puede haber campos nulos");
+    //   return;
+    // }
+
+    if (mascota.trim() === '' || propietario.trim() === '' || fecha.trim() === '' ||
+      hora.trim() === '' || sintomas.trim() === '') {
+      actualizarError(true);
+      return; // Para que no se siga ejecutando el codigo
+    }
 
     // Asignar ID
 
@@ -39,6 +54,8 @@ const Formulario = () => {
   return (
     <Fragment>
       <h2>Crear cita</h2>
+
+    {error ? <p className="alerta-error">Todos los campos son obligatorios</p> : null}
 
       <form
         onSubmit={submitCita}>
