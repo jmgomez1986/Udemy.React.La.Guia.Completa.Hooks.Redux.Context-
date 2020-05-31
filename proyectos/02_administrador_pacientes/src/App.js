@@ -17,7 +17,7 @@ function App() {
   //  Use Effect para realizar ciertas operaciones cuando el state cambia
   useEffect(() => {
     localStorage.setItem('citas', JSON.stringify(citas));
-  }, [citas]);
+  }, [citas, citasIniciales]);
 
   // Funcion que tome las citas actuales y agregue la nueva
   const crearCita = cita => {
