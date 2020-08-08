@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import Error from './Error'
 
-const Pregunta = () => {
+const Pregunta = ({ guardarPresupuesto, guardarRestante }) => {
 
   // Definir el state
   const [ cantidad, guardarCantidad ] = useState(0);
@@ -24,6 +24,9 @@ const Pregunta = () => {
 
     // Si la validacion e correcta
     guardarError(false);
+
+    guardarPresupuesto(cantidad);
+    guardarRestante(cantidad);
   }
 
   return ( 
