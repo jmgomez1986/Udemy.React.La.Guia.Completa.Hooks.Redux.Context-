@@ -29,7 +29,7 @@ function App() {
       console.log('Gasto: ', gasto);
     }
 
-  }); // Saque el arreglo de dependencias porque solo funcionaba con 'gasto0 pero marcaba un warning, si agregaba todos los demas andaba mal la app
+  }, [gasto, crearGasto, gastos, restante]);
 
   return (
     <div className="container">
