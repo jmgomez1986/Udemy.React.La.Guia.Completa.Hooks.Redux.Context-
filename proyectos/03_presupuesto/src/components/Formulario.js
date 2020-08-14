@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Error from './Error'
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
+import Error from './Error'
 
 const Formulario = ({ guardarGasto, guardarCrearGasto }) => {
 
@@ -42,7 +43,7 @@ const Formulario = ({ guardarGasto, guardarCrearGasto }) => {
 
       <h2>Agrega tus gastos aqui</h2>
 
-      {error ? <Error mensaje="Ambos campos son correctos o el presupuesto es incorrecto" /> : null}
+      {error ? <Error mensaje="Ambos campos son nulos o el presupuesto es incorrecto" /> : null}
 
       <div className="campo">
         <label>Nombre Gasto</label>
@@ -71,6 +72,11 @@ const Formulario = ({ guardarGasto, guardarCrearGasto }) => {
 
     </form>
   );
+}
+
+Formulario.propTypes = {
+  guardarGasto: PropTypes.func.isRequired,
+  guardarCrearGasto: PropTypes.func.isRequired
 }
  
 export default Formulario;

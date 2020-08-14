@@ -26,7 +26,6 @@ function App() {
       guardarRestante(presupuetoRestante);
       // Resetear control
       guardarCrearGasto(false);
-      console.log('Gasto: ', gasto);
     }
 
   }, [gasto, crearGasto, gastos, restante]);
