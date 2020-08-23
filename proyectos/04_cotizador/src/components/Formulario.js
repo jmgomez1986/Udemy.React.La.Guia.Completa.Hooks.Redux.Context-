@@ -1,21 +1,44 @@
 import React from "react";
+import styled from '@emotion/styled';
+
+const Campo = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
+
+const Label = styled.label`
+   flex: 0 0 100px; /* flex-grow, flex-shrink, and flex-basis */
+`;
+
+const Select = styled.select`
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e1e1e1;
+  -webkit-appearance: none; /* Dehabilita la apariencia natural del select*/
+`;
+
+const InputRadio = styled.input`
+  margin: 0 1rem;
+`;
 
 const Formulario = () => {
   return (
     <form>
-      <div>
-        <label>Marca</label>
-        <select>
+      <Campo>
+        <Label>Marca</Label>
+        <Select>
           <option value="">--- Seleccione ---</option>
           <option value="american">American</option>
           <option value="europeo">Europeo</option>
           <option value="asiatico">Asiatico</option>
-        </select>
-      </div>
+        </Select>
+      </Campo>
 
-      <div>
-        <label>Año</label>
-        <select>
+      <Campo>
+        <Label>Año</Label>
+        <Select>
           <option value="">-- Seleccione --</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -27,17 +50,19 @@ const Formulario = () => {
           <option value="2014">2014</option>
           <option value="2013">2013</option>
           <option value="2012">2012</option>
-        </select>
-      </div>
+        </Select>
+      </Campo>
 
-      <div>
-        <label>Plan</label>
-        <input type="radio" name="plan" value="baico" />
+      <Campo>
+        <Label>Plan</Label>
+        <InputRadio type="radio" name="plan" value="baico" />
         Básico
-        <input type="radio" name="plan" value="completo" />
+        <InputRadio type="radio" name="plan" value="completo" />
         Completo
-      </div>
+      </Campo>
+
       <buttom type="buttom">Cotizar</buttom>
+
     </form>
   );
 };
