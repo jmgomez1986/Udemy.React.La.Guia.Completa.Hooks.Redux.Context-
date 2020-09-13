@@ -1,5 +1,19 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import {obtenerDiferenciaAnio} from '../../src/helper'
+
+const anios = [
+  2021,
+  2020,
+  2019,
+  2018,
+  2017,
+  2016,
+  2015,
+  2014,
+  2013,
+  2012
+];
 
 const Campo = styled.div`
   display: flex;
@@ -79,7 +93,14 @@ const Formulario = () => {
     }
     guardarError(false);
 
+    let resultadoBase = 2000;
+
     // Obtener diferecia de años
+    const diferencia = obtenerDiferenciaAnio(anio);
+    console.log(diferencia);
+
+    // Por cada año hay que restar el 3%
+    resultadoBase -= ((diferencia * 3 ) * resultadoBase) / 100;
 
     // Americano 15%
     // Asiatico 5%
@@ -102,7 +123,7 @@ const Formulario = () => {
         <Label>Marca</Label>
         <Select name="marca" value={marca} onChange={obtenerInformacion}>
           <option value="">--- Seleccione ---</option>
-          <option value="american0">American0</option>
+          <option value="americano">Americano</option>
           <option value="europeo">Europeo</option>
           <option value="asiatico">Asiatico</option>
         </Select>
@@ -111,17 +132,7 @@ const Formulario = () => {
       <Campo>
         <Label>Año</Label>
         <Select name="anio" value={anio} onChange={obtenerInformacion}>
-          <option value="">-- Seleccione --</option>
-          <option value="2021">2021</option>
-          <option value="2020">2020</option>
-          <option value="2019">2019</option>
-          <option value="2018">2018</option>
-          <option value="2017">2017</option>
-          <option value="2016">2016</option>
-          <option value="2015">2015</option>
-          <option value="2014">2014</option>
-          <option value="2013">2013</option>
-          <option value="2012">2012</option>
+          {anios.map((item, i) => <option key={i} value={item}>{item}</option>)}
         </Select>
       </Campo>
 
@@ -130,7 +141,7 @@ const Formulario = () => {
         <InputRadio
           type="radio"
           name="plan"
-          value="baico"
+          value="basico"
           checked={plan === "basico"}
           onChange={obtenerInformacion}
         />
