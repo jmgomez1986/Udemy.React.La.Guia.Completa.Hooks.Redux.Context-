@@ -24,16 +24,20 @@ function App() {
     },
   });
 
-  const datos = resumen;
+  const datos = resumen.datos;
 
   return (
     <Contenedor>
       <Header titulo="Cotizador de seguros" />
 
       <ContenedorFormulario>
-        <Formulario guardarResumen={guardarResumen} />
+        <Formulario
+          guardarResumen={guardarResumen}
+        />
 
-        <Resumen datos={datos} />
+        <Resumen
+          datos={datos}
+        />
       </ContenedorFormulario>
     </Contenedor>
   );

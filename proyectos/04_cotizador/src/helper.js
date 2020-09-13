@@ -38,3 +38,7 @@ export function culcalarTipoSeguro(plan) {
   }
   return incremento;
 }
+
+export function primerLetraMayuscula(texto) {
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
