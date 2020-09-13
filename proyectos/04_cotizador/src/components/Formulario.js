@@ -3,21 +3,10 @@ import styled from "@emotion/styled";
 import {
   obtenerDiferenciaAnio,
   calcularMarca,
-  culcalarTipoSeguro
-} from '../../src/helper';
+  culcalarTipoSeguro,
+} from "../../src/helper";
 
-const anios = [
-  2021,
-  2020,
-  2019,
-  2018,
-  2017,
-  2016,
-  2015,
-  2014,
-  2013,
-  2012
-];
+const anios = [2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012];
 
 const Campo = styled.div`
   display: flex;
@@ -65,9 +54,9 @@ const Error = styled.div`
   width: 100%;
   text-align: center;
   margin-bottom: 2rem;
-`
+`;
 
-const Formulario = () => {
+const Formulario = ({ guardarResumen }) => {
   const [datos, guardarDatos] = useState({
     marca: "",
     anio: "",
@@ -88,10 +77,10 @@ const Formulario = () => {
   };
 
   // Cuando el usuario presiona Submit
-  const cotizarSeguro = e => {
+  const cotizarSeguro = (e) => {
     e.preventDefault();
 
-    if (marca.trim() === '' || anio.trim() === '' || plan.trim() === '') {
+    if (marca.trim() === "" || anio.trim() === "" || plan.trim() === "") {
       guardarError(true);
       return;
     }
@@ -101,10 +90,10 @@ const Formulario = () => {
 
     // Obtener diferecia de años
     const diferencia = obtenerDiferenciaAnio(anio);
-    console.log('Diferencia: ', diferencia);
+    console.log("Diferencia: ", diferencia);
 
     // Por cada año hay que restar el 3%
-    resultadoBase -= ((diferencia * 3 ) * resultadoBase) / 100;
+    resultadoBase -= (diferencia * 3 * resultadoBase) / 100;
 
     // Americano 15%
     // Asiatico 5%
@@ -113,18 +102,19 @@ const Formulario = () => {
 
     // Plan Basico - Aumenta 20%
     // Pan Completo - Aumento 50%
-    const incrementoPlan = culcalarTipoSeguro(plan);    
+    const incrementoPlan = culcalarTipoSeguro(plan);
     resultadoBase = parseFloat(incrementoPlan * resultadoBase).toFixed(2);
-    console.log('Resultado: ', resultadoBase);
+    console.log("Resultado: ", resultadoBase);
 
     // Total
-
-  }
+    guardarResumen({
+      cotizacion: resultadoBase,
+      datos,
+    });
+  };
 
   return (
-    <form
-      onSubmit={cotizarSeguro}>
-
+    <form onSubmit={cotizarSeguro}>
       {error ? <Error>Todos los campos son obligatorios</Error> : null}
 
       <Campo>
@@ -140,7 +130,11 @@ const Formulario = () => {
       <Campo>
         <Label>Año</Label>
         <Select name="anio" value={anio} onChange={obtenerInformacion}>
-          {anios.map((item, i) => <option key={i} value={item}>{item}</option>)}
+          {anios.map((item, i) => (
+            <option key={i} value={item}>
+              {item}
+            </option>
+          ))}
         </Select>
       </Campo>
 
