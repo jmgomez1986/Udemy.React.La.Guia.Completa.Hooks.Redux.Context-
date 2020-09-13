@@ -21,3 +21,20 @@ export function calcularMarca(marca) {
   }
   return incremento;
 }
+
+// Calcula el tipo del seguro
+export function culcalarTipoSeguro(plan) {
+  let incremento;
+
+  switch (plan) {
+    case "basico":
+      incremento = 1.20;
+      break;
+    case "completo":
+      incremento = 1.50;
+      break;
+    default:
+      break;
+  }
+  return incremento;
+}

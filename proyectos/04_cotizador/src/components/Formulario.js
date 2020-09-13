@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import {
   obtenerDiferenciaAnio,
-  calcularMarca
+  calcularMarca,
+  culcalarTipoSeguro
 } from '../../src/helper';
 
 const anios = [
@@ -109,10 +110,12 @@ const Formulario = () => {
     // Asiatico 5%
     // Europeo 30%
     resultadoBase = resultadoBase * calcularMarca(marca);
-    console.log('Resultado: ', resultadoBase);
 
-    // Plan basico - Aumenta 20%
+    // Plan Basico - Aumenta 20%
     // Pan Completo - Aumento 50%
+    const incrementoPlan = culcalarTipoSeguro(plan);    
+    resultadoBase = parseFloat(incrementoPlan * resultadoBase).toFixed(2);
+    console.log('Resultado: ', resultadoBase);
 
     // Total
 
