@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import {obtenerDiferenciaAnio} from '../../src/helper'
+import {
+  obtenerDiferenciaAnio,
+  calcularMarca
+} from '../../src/helper';
 
 const anios = [
   2021,
@@ -97,7 +100,7 @@ const Formulario = () => {
 
     // Obtener diferecia de años
     const diferencia = obtenerDiferenciaAnio(anio);
-    console.log(diferencia);
+    console.log('Diferencia: ', diferencia);
 
     // Por cada año hay que restar el 3%
     resultadoBase -= ((diferencia * 3 ) * resultadoBase) / 100;
@@ -105,6 +108,8 @@ const Formulario = () => {
     // Americano 15%
     // Asiatico 5%
     // Europeo 30%
+    resultadoBase = resultadoBase * calcularMarca(marca);
+    console.log('Resultado: ', resultadoBase);
 
     // Plan basico - Aumenta 20%
     // Pan Completo - Aumento 50%
